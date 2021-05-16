@@ -6,7 +6,8 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
+                    sh 'mvn clean compile -s mvn-settings.xml'
+                    
                 }
             }
         }
@@ -15,7 +16,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn test'
+                    sh 'mvn test -s mvn-settings.xml'
                 }
             }
         }
@@ -24,7 +25,7 @@ pipeline {
         stage ('Install Stage') {
             steps {
                 withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn install'
+                    sh 'mvn install -s mvn-settings.xml'
                 }
             }
         }

@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage ('Compile Stage') {
+        stage ('Composer Install') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn clean compile'
+                 {
+                    sh 'composer install'
                     
                 }
             }
@@ -15,8 +15,8 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn test'
+                 {
+                    sh 'npm install'
                 }
             }
         }
@@ -24,8 +24,8 @@ pipeline {
 
         stage ('Install Stage') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    sh 'mvn install'
+                 {
+                    sh 'npm run dev'
                 }
             }
         }
